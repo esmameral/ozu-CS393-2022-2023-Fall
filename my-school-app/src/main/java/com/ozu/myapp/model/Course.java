@@ -7,7 +7,12 @@ public class Course {
 	private String code;
 	private int credit;
 	
-	
+
+	public Course(String code, String name) {
+		this.code=code;
+		this.name=name;
+	}
+
 	public int getCredit() {
 		return credit;
 	}
