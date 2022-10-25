@@ -1,10 +1,19 @@
 package com.ozu.myapp.model;
 
-public class Course {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "T_COURSE")
+public class Course {
+    @Id
 	private int id; 
+    @Column(name="COURSE_NAME",length = 100)
 	private String name;
 	private String code;
+	
 	private int credit;
 	
 
