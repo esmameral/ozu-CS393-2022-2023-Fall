@@ -2,6 +2,8 @@ package com.ozu.myapp;
 
 import static org.mockito.Mockito.times;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -26,8 +28,10 @@ class MySchoolApplicationTests {
 	@Autowired
 	RegistrationService service;
 	
+	
+	
 	@Test
-	void contextLoads() {
+	void mockTest() {
 		Student aStudent = getDummyStudent();
 		Course aCourse = getDummyCourse();
 		Mockito.when(studentDAO.findById(1)).thenReturn(aStudent);
@@ -57,6 +61,27 @@ class MySchoolApplicationTests {
 		aStudent.getCourses().add(course1);
 		aStudent.getCourses().add(course2);
 		return aStudent;
+	}
+	
+	@Test
+	void testGetCourses() {
+		List<Course> list= service.getAll();
+		for (Course course : list) {
+			System.out.println(course.getName());
+		}
+		assertTrue(list.size()==2);
+		Course newCourse = new Course("CS101","programming");
+		
+		service.save(newCourse);
+		assertTrue(newCourse.getId()>0);
+		
+		List<Course> list2= service.getAll();
+		for (Course course : list2) {
+			System.out.println(course.getName());
+		}
+		assertTrue(list2.size()==3);
+		
+		
 	}
 
 }

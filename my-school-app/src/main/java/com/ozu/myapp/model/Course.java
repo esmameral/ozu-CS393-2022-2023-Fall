@@ -2,6 +2,8 @@ package com.ozu.myapp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "T_COURSE")
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id; 
     @Column(name="COURSE_NAME",length = 100)
 	private String name;
@@ -16,6 +19,11 @@ public class Course {
 	
 	private int credit;
 	
+
+	public Course() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Course(String code, String name) {
 		this.code=code;
