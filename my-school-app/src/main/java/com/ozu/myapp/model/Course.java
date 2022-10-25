@@ -22,7 +22,6 @@ public class Course {
 
 	public Course() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Course(String code, String name) {
