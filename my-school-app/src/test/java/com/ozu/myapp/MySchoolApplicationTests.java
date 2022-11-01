@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.ozu.myapp.dao.CourseDAO;
+import com.ozu.myapp.dao.StudentDAO;
 import com.ozu.myapp.model.Course;
 import com.ozu.myapp.model.Student;
-import com.ozu.myapp.repository.CourseDAO;
-import com.ozu.myapp.repository.StudentDAO;
 import com.ozu.myapp.service.RegistrationService;
 
 @SpringBootTest

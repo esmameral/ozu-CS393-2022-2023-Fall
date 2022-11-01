@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ozu.myapp.dao.CourseDAO;
+import com.ozu.myapp.dao.StudentDAO;
 import com.ozu.myapp.model.Course;
 import com.ozu.myapp.model.Student;
-import com.ozu.myapp.repository.CourseDAO;
 import com.ozu.myapp.repository.CourseRepository;
-import com.ozu.myapp.repository.StudentDAO;
 
 @Service
 public class RegistrationService {
@@ -26,6 +26,14 @@ public class RegistrationService {
 		return courseRepository.findAll();
 	}
 
+	public Course getCourseByCode(String courseCode){
+		return courseRepository.findByCode(courseCode);
+	}
+	
+	public List<Course> getMyCourse(String courseCode, int credit){
+		return courseRepository.findMyCourses(courseCode,  credit);
+	}
+	
 	public Course save(Course aCourse) {
 		return courseRepository.save(aCourse);
 	}

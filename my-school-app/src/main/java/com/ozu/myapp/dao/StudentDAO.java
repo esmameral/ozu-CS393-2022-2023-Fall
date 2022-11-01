@@ -1,4 +1,4 @@
-package com.ozu.myapp.repository;
+package com.ozu.myapp.dao;
 
 import org.springframework.stereotype.Repository;
 
