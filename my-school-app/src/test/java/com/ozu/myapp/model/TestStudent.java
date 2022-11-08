@@ -1,4 +1,4 @@
-package com.ozu.myapp;
+package com.ozu.myapp.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,13 +40,13 @@ class TestStudent {
 		firstStudent.setName("Eren");
 		assertEquals("Eren",firstStudent.getName() );
 		
-		Student secondStudent=new Student(345,"Arda");
+		Student secondStudent=new Student("Arda","CS");
 		assertEquals("Arda",secondStudent.getName());
-		assertTrue(secondStudent.getId()==345 );
+		assertTrue(secondStudent.getDepartment().equals("CS"));
 	}
 	@Test
 	void testStudentRegisterCourse() {
-		Student aStudent=new Student(345,"Arda");
+		Student aStudent=new Student("Arda","CS");
 		Course course1=new Course("CS202","Databases");
 		Course course2=new Course("CS393","Spring");
 		assertTrue(aStudent.getCourses().size()==0);

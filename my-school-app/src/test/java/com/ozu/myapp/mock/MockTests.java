@@ -1,4 +1,4 @@
-package com.ozu.myapp;
+package com.ozu.myapp.mock;
 
 import static org.mockito.Mockito.times;
 
@@ -18,7 +18,7 @@ import com.ozu.myapp.model.Student;
 import com.ozu.myapp.service.RegistrationService;
 
 @SpringBootTest
-class MySchoolApplicationTests {
+class MockTests {
 	@MockBean
 	StudentDAO studentDAO;
 	
@@ -28,10 +28,11 @@ class MySchoolApplicationTests {
 	@Autowired
 	RegistrationService service;
 	
-	
-	
 	@Test
 	void mockTest() {
+		service.setCourseDAO(courseDAO);
+		service.setStudentDAO(studentDAO);
+		
 		Student aStudent = getDummyStudent();
 		Course aCourse = getDummyCourse();
 		Mockito.when(studentDAO.findById(1)).thenReturn(aStudent);
@@ -55,7 +56,7 @@ class MySchoolApplicationTests {
 	}
 
 	private Student getDummyStudent() {
-		Student aStudent = new Student(1, "Kerem");
+		Student aStudent = new Student("Kerem","CS");
 		Course course1 = new Course("CS393", "Spring Framework");
 		Course course2 = new Course("CS101", "Introduction to Programming");
 		aStudent.getCourses().add(course1);
@@ -72,7 +73,7 @@ class MySchoolApplicationTests {
 		assertTrue(list.size()==2);
 		Course newCourse = new Course("CS101","programming");
 		
-		service.save(newCourse);
+		service.saveCourse(newCourse);
 		assertTrue(newCourse.getId()>0);
 		
 		List<Course> list2= service.getAll();
