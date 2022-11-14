@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -47,10 +48,11 @@ public class Course {
 	
 	/**
 	 * Owning side
-	 * @ManyToOne
+	 * 
 	 * JPA adds a new column named INSTRUCTOR_ID into COURSE table for relation.
 	 * If you want to change that default column name, you can use @JoinColumn
 	 */
+	@ManyToOne
 	@JoinColumn(name = "INS_ID")
 	private Instructor instructor;
 
@@ -74,9 +76,10 @@ public class Course {
 		super();
 	}
 
-	public Course(String code, String name) {
+	public Course(String code, String name, int credit) {
 		this.code=code;
 		this.name=name;
+		this.credit=credit;
 	}
 
 	public int getCredit() {

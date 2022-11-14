@@ -11,9 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="T_INSTRUCTOR")
 public class Instructor extends Person{
+	
 	private String roomNumber;
 	
-
 	@OneToMany(mappedBy = "instructor",cascade = CascadeType.ALL)
 	private List<Course> courses=new ArrayList<>();
 	

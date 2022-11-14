@@ -47,8 +47,8 @@ class TestStudent {
 	@Test
 	void testStudentRegisterCourse() {
 		Student aStudent=new Student("Arda","CS");
-		Course course1=new Course("CS202","Databases");
-		Course course2=new Course("CS393","Spring");
+		Course course1=new Course("CS202","Databases",4);
+		Course course2=new Course("CS393","Spring",4);
 		assertTrue(aStudent.getCourses().size()==0);
 		
 		aStudent.getCourses().add(course1);

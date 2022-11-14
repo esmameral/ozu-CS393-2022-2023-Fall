@@ -21,6 +21,15 @@ public class RegistrationService {
 
 	// @Autowired
 	CourseDAO courseDAO;
+	
+	@Autowired
+	CourseRepository courseRepository;
+	
+	@Autowired
+	InstructorRepository instructorRepository;
+	
+	@Autowired
+	StudentRepository studentRepository;
 
 	public StudentDAO getStudentDAO() {
 		return studentDAO;
@@ -62,14 +71,7 @@ public class RegistrationService {
 		this.studentRepository = studentRepository;
 	}
 
-	@Autowired
-	CourseRepository courseRepository;
 	
-	@Autowired
-	InstructorRepository instructorRepository;
-	
-	@Autowired
-	StudentRepository studentRepository;
 
 	public List<Course> getAll() {
 		return courseRepository.findAll();

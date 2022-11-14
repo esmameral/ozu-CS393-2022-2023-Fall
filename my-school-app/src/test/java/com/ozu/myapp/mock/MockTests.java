@@ -50,15 +50,15 @@ class MockTests {
 	}
 	
 	private Course getDummyCourse() {
-		Course aCourse = new Course("CS391", "Web Programming");
+		Course aCourse = new Course("CS391", "Web Programming",4);
 
 		return aCourse;
 	}
 
 	private Student getDummyStudent() {
 		Student aStudent = new Student("Kerem","CS");
-		Course course1 = new Course("CS393", "Spring Framework");
-		Course course2 = new Course("CS101", "Introduction to Programming");
+		Course course1 = new Course("CS393", "Spring Framework",4);
+		Course course2 = new Course("CS101", "Introduction to Programming",6);
 		aStudent.getCourses().add(course1);
 		aStudent.getCourses().add(course2);
 		return aStudent;
@@ -71,7 +71,7 @@ class MockTests {
 			System.out.println(course.getName());
 		}
 		assertTrue(list.size()==2);
-		Course newCourse = new Course("CS101","programming");
+		Course newCourse = new Course("CS101","programming",6);
 		
 		service.saveCourse(newCourse);
 		assertTrue(newCourse.getId()>0);
