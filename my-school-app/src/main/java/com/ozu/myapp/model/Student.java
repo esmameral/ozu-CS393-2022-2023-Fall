@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Student extends Person {
 	private String department;
 	
-	@ManyToMany(mappedBy ="students" ,cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy ="students"  )
 	private List<Course> courses = new ArrayList<>();
 
 	

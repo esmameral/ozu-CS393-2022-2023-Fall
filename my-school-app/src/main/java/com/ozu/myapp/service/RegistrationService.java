@@ -2,6 +2,8 @@ package com.ozu.myapp.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +23,13 @@ public class RegistrationService {
 
 	// @Autowired
 	CourseDAO courseDAO;
-	
+
 	@Autowired
 	CourseRepository courseRepository;
-	
+
 	@Autowired
 	InstructorRepository instructorRepository;
-	
+
 	@Autowired
 	StudentRepository studentRepository;
 
@@ -71,28 +73,52 @@ public class RegistrationService {
 		this.studentRepository = studentRepository;
 	}
 
+	public List<Student> getAllStudentsForCourse(String courseCode) {
+		return studentRepository.findByCoursesCode(courseCode);
+	}
 	
+	public List<Student> findMyStudents(String courseCode) {
+		return studentRepository.findMyStudents(courseCode);
+	}
+	/**
+	 * This method is added for experimenting Spring Transaction management
+	 * If you don't use @Transactional the Container will commit changes to the database 
+	 * even though there is an exception. 
+	 * When you use @Transaction, the container will commit or rollback all 
+	 */
+	@Transactional
+	public void transactionSample() {
+		Course c=courseRepository.findById(3).get();
+		Instructor i=instructorRepository.findById(4).get();
+		
+		
+		i.setName("VELİ");
+		instructorRepository.save(i);
+		c.setCredit(Integer.valueOf("5"));
+		courseRepository.save(c);
+		
+	}
 
 	public List<Course> getAll() {
 		return courseRepository.findAll();
 	}
 
-	public Course getCourseByCode(String courseCode){
+	public Course getCourseByCode(String courseCode) {
 		return courseRepository.findByCode(courseCode);
 	}
-	
-	public List<Course> getMyCourse(String courseCode, int credit){
-		return courseRepository.findMyCourses(courseCode,  credit);
+
+	public List<Course> getMyCourse(String courseCode, int credit) {
+		return courseRepository.findMyCourses(courseCode, credit);
 	}
-	
+
 	public Course saveCourse(Course aCourse) {
 		return courseRepository.save(aCourse);
 	}
-	
+
 	public Instructor saveInstructor(Instructor ins) {
 		return instructorRepository.save(ins);
 	}
-	
+
 	public Student saveStudent(Student s) {
 		return studentRepository.save(s);
 	}

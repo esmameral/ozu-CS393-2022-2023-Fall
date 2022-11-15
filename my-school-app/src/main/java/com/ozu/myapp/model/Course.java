@@ -38,7 +38,7 @@ public class Course {
 	 * @JoinTable and @JoinColumn
 	 */
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany()
 	@JoinTable(name = "REL_COURSE_STUDENT", 
 	joinColumns = @JoinColumn(name = "COURSE_ID", 
 	referencedColumnName = "ID"), 

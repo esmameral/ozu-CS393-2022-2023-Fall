@@ -14,7 +14,7 @@ public class Instructor extends Person{
 	
 	private String roomNumber;
 	
-	@OneToMany(mappedBy = "instructor",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "instructor")
 	private List<Course> courses=new ArrayList<>();
 	
 	public Instructor() {
