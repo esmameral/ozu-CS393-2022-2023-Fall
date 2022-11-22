@@ -8,12 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="T_STUDENT")
 public class Student extends Person {
 	private String department;
 	
 	@ManyToMany(mappedBy ="students"  )
+	//@ManyToMany(mappedBy ="students" , cascade = {CascadeType.ALL} )
+	@JsonIgnore
 	private List<Course> courses = new ArrayList<>();
 
 	

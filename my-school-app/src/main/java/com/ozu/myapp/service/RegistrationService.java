@@ -76,27 +76,27 @@ public class RegistrationService {
 	public List<Student> getAllStudentsForCourse(String courseCode) {
 		return studentRepository.findByCoursesCode(courseCode);
 	}
-	
+
 	public List<Student> findMyStudents(String courseCode) {
 		return studentRepository.findMyStudents(courseCode);
 	}
+
 	/**
-	 * This method is added for experimenting Spring Transaction management
-	 * If you don't use @Transactional the Container will commit changes to the database 
-	 * even though there is an exception. 
-	 * When you use @Transaction, the container will commit or rollback all 
+	 * This method is added for experimenting Spring Transaction management If you
+	 * don't use @Transactional the Container will commit changes to the database
+	 * even though there is an exception. When you use @Transaction, the container
+	 * will commit or rollback all
 	 */
 	@Transactional
 	public void transactionSample() {
-		Course c=courseRepository.findById(3).get();
-		Instructor i=instructorRepository.findById(4).get();
-		
-		
+		Course c = courseRepository.findById(3).get();
+		Instructor i = instructorRepository.findById(4).get();
+
 		i.setName("VELİ");
 		instructorRepository.save(i);
 		c.setCredit(Integer.valueOf("5"));
 		courseRepository.save(c);
-		
+
 	}
 
 	public List<Course> getAll() {
@@ -134,8 +134,16 @@ public class RegistrationService {
 		return aStudent;
 	}
 
+	public void deleteStudent(int id) {
+		studentRepository.deleteById(id);
+	}
+
 	public boolean dropCourse(String courseCode, int studentId) {
 		return false;
+	}
+
+	public List<Student> findAllStudents() {
+		return studentRepository.findAll();
 	}
 
 }
