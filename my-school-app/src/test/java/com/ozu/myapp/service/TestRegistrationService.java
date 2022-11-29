@@ -99,4 +99,9 @@ public class TestRegistrationService {
 		service.saveCourse(course2);
 
 	}
+	
+	@Test
+	public void testAddStudentToCourse() {
+		service.enrollStudentCourse(312,202);
+	}
 }

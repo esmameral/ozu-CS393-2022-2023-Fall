@@ -14,6 +14,8 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 	@Query("Select s from Student s inner join s.courses c where c.code=?1")
 	public List<Student> findMyStudents(String code);
 	
+	
 	public List<Student> findByCoursesCode(String code);
-
+	
+	
 }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.ozu.myapp.dao.CourseDAO;
 import com.ozu.myapp.dao.StudentDAO;
+import com.ozu.myapp.dto.StudentDTO;
+import com.ozu.myapp.mapper.StudentMapper;
 import com.ozu.myapp.model.Course;
 import com.ozu.myapp.model.Instructor;
 import com.ozu.myapp.model.Student;
@@ -33,6 +35,22 @@ public class RegistrationService {
 	@Autowired
 	StudentRepository studentRepository;
 
+	public StudentDTO findStudentById(int id) {
+		Student s=studentRepository.findById(id).get();
+		
+		return  StudentMapper.studentToDTO(s);
+	}
+	
+	@Transactional
+	public String enrollStudentCourse(int courseId, int studentId) {
+		Course c=courseRepository.findById(courseId).get();
+		Student s=studentRepository.findById(studentId).get();
+		c.getStudents().add(s);
+		s.getCourses().add(c);
+		courseRepository.save(c);
+		return "Success";
+	}
+	
 	public StudentDAO getStudentDAO() {
 		return studentDAO;
 	}
