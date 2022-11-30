@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component("my")
+@Component
 @Scope(value = "prototype")
-public class MyBean  {
+public class HelloBean  {
 
-	@Value("Good morning")
+	@Value("Hi")
 	private String message;
 
 	public String getMessage() {

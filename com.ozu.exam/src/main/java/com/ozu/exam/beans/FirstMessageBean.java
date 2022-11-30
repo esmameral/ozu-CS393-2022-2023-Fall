@@ -5,8 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component("firstBean")
-@Primary
-public class FirstMyBeanImpl implements MyBean  {
+public class FirstMessageBean implements MessageBean  {
 
 	@Value("Good morning")
 	private String message;
@@ -20,6 +19,4 @@ public class FirstMyBeanImpl implements MyBean  {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-
 }

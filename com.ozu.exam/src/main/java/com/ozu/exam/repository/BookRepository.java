@@ -10,4 +10,5 @@ import com.ozu.exam.model.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
 	public List<Book> findByTitleOrAuthor(String title, String author);
+	public List<Book> findByPriceGreaterThanEqualAndPriceLessThanEqual(double a, double b);
 }

@@ -19,8 +19,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    //runtimeOnly  'org.apache.derby:derbyclient:10.16.1.1'
-    //runtimeOnly  'org.apache.derby:derbytools:10.16.1.1'
+    runtimeOnly  'org.apache.derby:derbyclient:10.16.1.1'
+    runtimeOnly  'org.apache.derby:derbytools:10.16.1.1'
     runtimeOnly 'com.h2database:h2'
   
 }

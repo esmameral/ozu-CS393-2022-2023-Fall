@@ -5,9 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component("secondBean")
-@Primary
-
-public class SecondMyBeanImpl implements MyBean {
+public class SecondMessageBean implements MessageBean {
 
 	@Value("Good evening")
 	private String message;

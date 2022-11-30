@@ -7,12 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "TBOOK")
+//@Table(name = "TBOOK")
 public class Book {
-	@Override
-	public String toString() {
-		return "Book [isbn=" + isbn + ", title=" + title + ", author=" + author + ", publisher=" + publisher + "]";
-	}
+	
 
 	@Id
 	@Column(length = 10)
@@ -21,12 +18,15 @@ public class Book {
 	@Column(length = 50, nullable = false)
 	private String title;
 	
-	@Column(length = 20)
+	@Column(length = 10)
 	private String author;
 	
-	@Transient
-	@Column(name = "PUBLISHING_COMPANY")
+	//@Transient
+	@Column(name = "COMPANY")
 	private String publisher;
+	
+	private double price;
+	
 
 	public String getTitle() {
 		return title;
@@ -75,5 +75,16 @@ public class Book {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", author=" + author + ", publisher=" + publisher + "]";
+	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

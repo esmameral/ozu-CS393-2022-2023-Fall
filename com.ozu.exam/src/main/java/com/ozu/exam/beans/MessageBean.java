@@ -1,6 +1,6 @@
 package com.ozu.exam.beans;
 
-public interface MyBean {
+public interface MessageBean {
 
 	public String getMessage();
 

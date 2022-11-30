@@ -8,20 +8,21 @@ import com.ozu.exam.Application;
 
 
 
-public class TestMyBean {
+public class TestHelloBean {
 
 	public static void main(String[] args) {
 		ApplicationContext context= new AnnotationConfigApplicationContext(Application.class);
 		
-		MyBean myBean1=context.getBean("myBean", MyBean.class);
-		System.out.println(myBean1.getMessage());
+		HelloBean bean1=context.getBean("helloBean", HelloBean.class);
+		HelloBean bean2=context.getBean("helloBean", HelloBean.class);
+		System.out.println(bean1.getMessage());
+		System.out.println(bean2.getMessage());
 		
-		myBean1.setMessage("Good evening");
-		System.out.println(myBean1.getMessage());
+		bean2.setMessage("Hi, how are you?");
+		System.out.println(bean1.getMessage());
+		System.out.println(bean2.getMessage());
 		
-		MyBean myBean2=context.getBean("myBean", MyBean.class);
-		System.out.println(myBean2.getMessage());
-		System.out.println(myBean1.getMessage());
+		
 	}
 
 }
