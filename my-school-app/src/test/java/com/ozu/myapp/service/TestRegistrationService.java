@@ -34,6 +34,7 @@ public class TestRegistrationService {
 		Instructor i1 = new Instructor("Alper", "456");
 		service.saveStudent(s1);
 		service.saveInstructor(i1);
+		assertTrue(s1.getId()!=0);
 		System.out.println(s1);
 		System.out.println(i1);
 
