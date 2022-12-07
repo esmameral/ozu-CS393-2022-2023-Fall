@@ -10,50 +10,53 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ozu.myapp.dto.InstructorDTO;
+import com.ozu.myapp.mapper.InstructorMapper;
 import com.ozu.myapp.model.Course;
 import com.ozu.myapp.model.Instructor;
 import com.ozu.myapp.model.Student;
 
 @SpringBootTest
-public class TestRegistrationService {
+public class TestJPAConfig {
 	@Autowired
-	RegistrationService service;
+	StudentService studentService;
+	
+	@Autowired
+	InstructorService instructorService;
 
-	@Test
-	public void testGetCourseByCode() {
-		Course course = service.getCourseByCode("CS105");
-		System.out.println(course);
-
-		List<Course> list = service.getMyCourse("CS393", 6);
-		System.out.println(list.size());
-	}
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired
+	InstructorMapper instructorMapper;
 
 	@Test
 	public void testMappings() {
 		Student s1 = new Student("Nedim", "CS");
-		Instructor i1 = new Instructor("Alper", "456");
-		service.saveStudent(s1);
-		service.saveInstructor(i1);
+		InstructorDTO i1 = new InstructorDTO("Alper", "456");
+		studentService.save(s1);
+		instructorService.save(i1);
 		assertTrue(s1.getId()!=0);
 		System.out.println(s1);
 		System.out.println(i1);
 
 		Course c1 = new Course("CS114", "C++", 6);
-		service.saveCourse(c1);
+		courseService.saveCourse(c1);
 		c1.getStudents().add(s1);
 		s1.getCourses().add(c1);
-		c1.setInstructor(i1);
-		i1.getCourses().add(c1);
+		Instructor instructor=instructorMapper.instructorDTOToEntity(i1);
+		c1.setInstructor(instructor);
+		instructor.getCourses().add(c1);
 
-		service.saveInstructor(i1);
-		service.saveStudent(s1);
+		instructorService.save(instructorMapper.instructorEntityToDTO(instructor));
+		studentService.save(s1);
 
 		System.out.println(c1);
 	}
 
 	@Test
 	public void testJPQL1() {
-		List<Student> list = service.getAllStudentsForCourse("CS105");
+		List<Student> list = studentService.getAllByCourseCode("CS101");
 		assertTrue(list.size() >= 0);
 		for (Student student : list) {
 			System.out.println(student);
@@ -63,14 +66,14 @@ public class TestRegistrationService {
 	
 	@Test
 	public void testTrx() {
-		service.transactionSample();
+		studentService.transactionSample();
 	}
 	
 	
 	
 	@Test
 	public void testJPQLQuery() {
-		List<Student> list = service.findMyStudents("CS383");
+		List<Student> list = studentService.findMyStudents("CS317");
 		assertTrue(list.size() >= 0);
 		for (Student student : list) {
 			System.out.println(student);
@@ -79,6 +82,7 @@ public class TestRegistrationService {
 	}
 
 	@Test
+	@Transactional
 	public void testCascade() {
 		Student student1 = new Student("Canan Demir", "IE");
 		Student student2 = new Student("Kaan Karaca", "CS");
@@ -96,13 +100,10 @@ public class TestRegistrationService {
 		course1.setInstructor(ins1);
 		ins1.getCourses().add(course1);
 
-		service.saveInstructor(ins1);
-		service.saveCourse(course2);
+		instructorService.save(instructorMapper.instructorEntityToDTO(ins1));
+		courseService.saveCourse(course2);
 
 	}
 	
-	@Test
-	public void testAddStudentToCourse() {
-		service.enrollStudentCourse(312,202);
-	}
+	
 }

@@ -12,7 +12,7 @@ public class TestCourseDAO {
 	CourseDAO courseDAO;
 	@Test
 	public void testGetCourseByCode() {
-		Course c=courseDAO.findByCode("CS105");
+		Course c=courseDAO.findByCode("CS103");
 		System.out.println(c.getCode()+" "+c.getName());
 	}
 

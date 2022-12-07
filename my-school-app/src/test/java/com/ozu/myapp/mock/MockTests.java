@@ -1,10 +1,8 @@
 package com.ozu.myapp.mock;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import com.ozu.myapp.dao.CourseDAO;
 import com.ozu.myapp.dao.StudentDAO;
 import com.ozu.myapp.model.Course;
 import com.ozu.myapp.model.Student;
-import com.ozu.myapp.service.RegistrationService;
+import com.ozu.myapp.service.StudentService;
 
 @SpringBootTest
 class MockTests {
@@ -26,8 +24,8 @@ class MockTests {
 	CourseDAO courseDAO;
 	
 	@Autowired
-	RegistrationService service;
-	
+	StudentService service;
+			
 	@Test
 	void mockTest() {
 		service.setCourseDAO(courseDAO);
@@ -64,25 +62,6 @@ class MockTests {
 		return aStudent;
 	}
 	
-	@Test
-	void testGetCourses() {
-		List<Course> list= service.getAll();
-		for (Course course : list) {
-			System.out.println(course.getName());
-		}
-		assertTrue(list.size()==2);
-		Course newCourse = new Course("CS101","programming",6);
-		
-		service.saveCourse(newCourse);
-		assertTrue(newCourse.getId()>0);
-		
-		List<Course> list2= service.getAll();
-		for (Course course : list2) {
-			System.out.println(course.getName());
-		}
-		assertTrue(list2.size()==3);
-		
-		
-	}
+	
 
 }

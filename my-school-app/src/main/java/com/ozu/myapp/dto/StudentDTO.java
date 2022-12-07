@@ -4,6 +4,7 @@ public class StudentDTO  {
 	private int studentNumber;
 	private String studentFullName;
 	private String department;
+	
 	public int getStudentNumber() {
 		return studentNumber;
 	}

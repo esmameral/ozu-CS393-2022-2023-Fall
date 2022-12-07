@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
 	id 'war'
+	id 'com.diffplug.eclipse.apt' version '3.40.0'
 }
 
 group = 'com.ozu.myapp'
@@ -22,6 +23,10 @@ dependencies {
     //runtimeOnly 'com.h2database:h2'
     runtimeOnly  'org.apache.derby:derbyclient:10.15.2.0'
     runtimeOnly  'org.apache.derby:derbytools:10.15.2.0'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.12'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    
  
 }
 
