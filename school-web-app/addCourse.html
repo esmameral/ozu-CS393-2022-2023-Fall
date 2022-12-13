@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="scripts/myFunctions.js">
+
+</script>
+<title>School Application</title>
+</head>
+<body >
+    <h2>Add Course</h2>
+	<form method="get" action="success.html" onsubmit="return validateFormData()">
+		<input type="text" name="code"  id="code" maxlength="6"  size="6" placeholder="Course Code"> <br>
+        <input type="text" name="name" id="name" maxlength="30"  size="30"  placeholder="Course Name"> <br>
+        <input type="number" name="credit" id="credit" min="0" max="8" step="2"  placeholder="credit"> <br>
+		<input type="submit" value="OK" >
+
+	</form>
+
+<input type="button" onclick="instructors()" value="Get Instructors"/>
+<div id="insList">
+   <b> Available Instructors </b>
+</div>
+</body>
+</html>
+
+
