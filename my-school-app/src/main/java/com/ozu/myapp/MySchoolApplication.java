@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 @OpenAPIDefinition(info = @Info(version = "1.0", 
 title = "School Management System API", 
 description = "All Administration Operations"))
-
 public class MySchoolApplication {
 
 	public static void main(String[] args) {
