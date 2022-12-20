@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="scripts/myFunctions.js">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="scripts/myFunctions.js"></script>
 
-</script>
 <title>School Application</title>
 </head>
 <body >
@@ -13,11 +13,11 @@
 		<input type="text" name="code"  id="code" maxlength="6"  size="6" placeholder="Course Code"> <br>
         <input type="text" name="name" id="name" maxlength="30"  size="30"  placeholder="Course Name"> <br>
         <input type="number" name="credit" id="credit" min="0" max="8" step="2"  placeholder="credit"> <br>
-		<input type="submit" value="OK" >
+		<input type="submit" value="Create Course" >
 
 	</form>
 
-<input type="button" onclick="instructors()" value="Get Instructors"/>
+<input type="button" onclick="getAllInstructors()" value="Get Instructors"/>
 <div id="insList">
    <b> Available Instructors </b>
 </div>

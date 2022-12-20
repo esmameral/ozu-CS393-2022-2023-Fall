@@ -1,13 +1,8 @@
-function instructors(){
-
-    var instructors=[{name:"Hasan",roomNumber:"111"},{name:"Furkan",roomNumber:"321"},
-    {name:"Reyhan",roomNumber:"233"}
-
-    ];
+function printInstructors(instructors){
     var tableText="<table> <tr> <th>Name</th><th>Room</th></tr>";
     for (ins of instructors){
-        console.log(ins.name+" "+ins.roomNumber);
-        tableText+="<tr><td>"+ins.name+"</td><td>"+ins.roomNumber+"</td></tr>";
+        console.log(ins.name+" "+ins.officeNumber);
+        tableText+="<tr><td>"+ins.name+"</td><td>"+ins.officeNumber+"</td></tr>";
     }
     tableText+="</table>";
     console.log(tableText);
@@ -15,7 +10,39 @@ function instructors(){
 
 }
 
+function getAllInstructors() {
 
+    axios.get("http://localhost:8080/instructors")
+      .then(res => {
+        const insList = res.data;
+        console.log(insList);
+        printInstructors(insList);
+      })
+
+    
+}
+
+function createCourse() {
+    var code = document.getElementById("code").value;
+    var name = document.getElementById("name").value;
+    var credit = document.getElementById("credit").value;
+    const course = {
+        "code": code,
+        "name": name,
+        "credit":credit
+    }
+    axios.post("http://localhost:8080/courses",course)
+      .then(res => {
+        const course = res.data;
+        console.log(course);
+       
+      }).catch(function (error) {
+        console.log(error);
+      });
+    
+
+    
+}
 
 
 
@@ -49,5 +76,6 @@ function validateFormData() {
         "credit":credit
     }
     console.log(course);
+    createCourse();
     return true;
 }
