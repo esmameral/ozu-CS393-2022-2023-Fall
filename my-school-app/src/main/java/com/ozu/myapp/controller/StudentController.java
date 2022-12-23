@@ -34,7 +34,12 @@ public class StudentController {
 
 	@GetMapping
 	public List<Student> getAll() {
-		return service.findAll();
+	    return service.findAll();
+	}
+	
+	@GetMapping(value="/engineers")
+	public List<Student> getAllEngineeringStudents() {
+		return service.findAllEngineeringStudents();
 	}
 
 	@GetMapping(value = "/{id}")

@@ -1,11 +1,13 @@
 package com.ozu.myapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.ozu.myapp.dao.CourseDAO;
@@ -151,6 +153,17 @@ public class StudentService {
 	public void setStudentRepository(StudentRepository studentRepository) {
 		this.studentRepository = studentRepository;
 	}
+
+	 
+	
+    
+
+    public List<Student> findAllEngineeringStudents() {
+        List<String> depCodes=new ArrayList<>();
+        depCodes.add("IE");
+        depCodes.add("CS");
+        return studentRepository.findByDepartmentIn(depCodes);
+    }
 
 	
 
