@@ -19,7 +19,10 @@ public class Playlist {
 	private String name;
 	
 	@OneToMany()
-	@JoinColumn(name = "SONG_ID")
+	@JoinTable(name = "REL_PLAYLIST_SONG", 
+    joinColumns = @JoinColumn(name = "PL_ID", referencedColumnName = "ID"), 
+    inverseJoinColumns = @JoinColumn(name = "SONG_ID", 
+    referencedColumnName = "ID"))
 	private List<Song> songs=new ArrayList<>();
 	
 	@ManyToMany()
