@@ -13,7 +13,6 @@ import ozu.cs393.homework1.model.Album;
 import ozu.cs393.homework1.model.Artist;
 import ozu.cs393.homework1.model.Playlist;
 import ozu.cs393.homework1.model.Song;
-import ozu.cs393.homework1.repository.SongRepository;
 import ozu.cs393.homework1.service.PlaylistService;
 
 @SpringBootTest
