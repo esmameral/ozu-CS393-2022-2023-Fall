@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 @Entity
 public class Playlist {
 	@Id
@@ -18,7 +17,7 @@ public class Playlist {
 	private int id;
 	private String name;
 	
-	@OneToMany()
+	@ManyToMany()
 	@JoinTable(name = "REL_PLAYLIST_SONG", 
     joinColumns = @JoinColumn(name = "PL_ID", referencedColumnName = "ID"), 
     inverseJoinColumns = @JoinColumn(name = "SONG_ID", 
